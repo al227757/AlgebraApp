@@ -137,4 +137,22 @@ public class Cuaderno {
         cocientes.add(resto);
         return cocientes;
     }
+    ////NUEVO
+    public Termino lcm(Termino t1, Termino t2){
+        int [] monomio1=t1.getMonomio();
+        int [] monomio2=t2.getMonomio();
+        int longitud=monomio1.length;
+        int [] exponentes = new int[longitud];
+        for(int i=0; i<longitud; i++){
+            if(monomio1[i]>monomio2[i]){
+                exponentes[i]=monomio1[i];
+            }else{
+                exponentes[i]=monomio2[i];
+            }
+        }
+        return(new Termino(1,exponentes));
+
+    }
+
+
 }
