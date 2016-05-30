@@ -181,7 +181,7 @@ public class Cuaderno {
 
                         System.out.println("            S-POL "+sPol); //////////TEST
 
-                        resultDivision=dividir(sPol,G_prima);////PROBLEMA: se atasca cuando en el generador F hay algun termino solo.
+                        resultDivision=dividir(sPol,G_prima);////PROBLEMA: se atasca
 
                         System.out.println("             RESULT DIVISION "+resultDivision); //////////TEST
                         resto=resultDivision.get(resultDivision.size()-1);
