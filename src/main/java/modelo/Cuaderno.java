@@ -1,11 +1,13 @@
 package modelo;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import estructuras.OrdenLexicografico;
 import estructuras.Polinomio;
 import estructuras.Termino;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Cuaderno {
@@ -151,6 +153,50 @@ public class Cuaderno {
             }
         }
         return(new Termino(1,exponentes));
+
+    }
+
+    public Polinomio sPolinomio(Polinomio p1, Polinomio p2){
+        Termino termino_comun = lcm(p1.leadingTerm(this.orden),p2.leadingTerm(this.orden));
+        Termino coeficiente1=this.dividir(termino_comun,p1.leadingTerm(this.orden));
+        Termino coeficiente2=this.dividir(termino_comun,p2.leadingTerm(this.orden));
+        Polinomio aux1=this.multiplicar(p1,coeficiente1);
+        Polinomio aux2=this.multiplicar(p2,coeficiente2);
+        return this.restar(aux1,aux2);
+    }
+
+    public List<Polinomio> groebnerBase(List<Polinomio> F){
+        List<Polinomio> G_prima = new ArrayList<Polinomio>();
+        List<Polinomio> G = new ArrayList<Polinomio>(F);
+        List<Polinomio> resultDivision;
+        Polinomio resto;
+        Polinomio sPol;
+        while(G.size()!=G_prima.size()){
+            G_prima=new LinkedList<Polinomio>(G);
+            for(int i=0;i<G_prima.size();i++){
+                for(int j=i;j<G_prima.size();j++){
+                    if(i!=j){
+                        System.out.println("            i: "+i+" j: "+j); //////////TEST
+                        sPol=this.sPolinomio(G_prima.get(i),G_prima.get(j));
+
+                        System.out.println("            S-POL "+sPol); //////////TEST
+
+                        resultDivision=dividir(sPol,G_prima);////PROBLEMA: se atasca cuando en el generador F hay algun termino solo.
+
+                        System.out.println("             RESULT DIVISION "+resultDivision); //////////TEST
+                        resto=resultDivision.get(resultDivision.size()-1);
+
+                        if(resto.leadingTerm(this.orden).getCoeficiente()!=0){
+                            G.add(resto);
+                            System.out.println("                 ADDED "+resto); //////////TEST
+                        }
+                    }
+                }
+            }
+            System.out.println("SIZE: "+G.size()+"---"+G_prima.size()); //////////TEST
+        }
+        return G;
+
 
     }
 
