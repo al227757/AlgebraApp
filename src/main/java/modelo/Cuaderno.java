@@ -186,9 +186,11 @@ public class Cuaderno {
                         System.out.println("             RESULT DIVISION "+resultDivision); //////////TEST
                         resto=resultDivision.get(resultDivision.size()-1);
 
-                        if(resto.leadingTerm(this.orden).getCoeficiente()!=0){
-                            G.add(resto);
-                            System.out.println("                 ADDED "+resto); //////////TEST
+                        if (resto.getTerminos().size() != 0){
+                            if(resto.leadingTerm(this.orden).getCoeficiente()!=0){
+                                G.add(resto);
+                                System.out.println("                 ADDED "+resto); //////////TEST
+                            }
                         }
                     }
                 }

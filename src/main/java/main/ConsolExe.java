@@ -53,7 +53,7 @@ public class ConsolExe {
         int[] h12 = {0,1,0};
         int[] h13 = {0,3,0};
         h1.addTermino(new Termino(1,h11));
-        h1.addTermino(new Termino(-1,h12));
+        //h1.addTermino(new Termino(-1,h12));
         //h1.addTermino(new Termino(2,h13));
         Polinomio h2=new Polinomio();
         int[] h21 = {1,3,0};
