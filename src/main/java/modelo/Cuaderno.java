@@ -234,7 +234,7 @@ public class Cuaderno {
                 newBaseMinimal.add(p);
             }
         }
-        
+
         return newBaseMinimal;
     }
 
