@@ -220,7 +220,7 @@ public class Cuaderno {
                         }
                     }
                     if(jDividei){
-                        baseMinimal.remove(i);
+                        baseMinimal.set(i,null);
                     }
                 }
 
@@ -228,7 +228,14 @@ public class Cuaderno {
 
         }
 
-        return baseMinimal;
+        List<Polinomio> newBaseMinimal = new LinkedList<Polinomio>();
+        for(Polinomio p:baseMinimal){
+            if(p!=null){
+                newBaseMinimal.add(p);
+            }
+        }
+        
+        return newBaseMinimal;
     }
 
 

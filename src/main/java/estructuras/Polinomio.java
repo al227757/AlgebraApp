@@ -42,7 +42,7 @@ public class Polinomio {
     }
 
     private List<Termino> agruparRec(int index,List<Termino> lista){
-        if( index == lista.size()-1 || lista.size() == 0){
+        if( index == lista.size()-1 || lista.size() <= 1){
             return lista;
         }else{
             Termino nuevo,aux1,aux2;
