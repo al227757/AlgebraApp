@@ -181,7 +181,7 @@ public class Cuaderno {
 
                         System.out.println("            S-POL "+sPol); //////////TEST
 
-                        resultDivision=dividir(sPol,G_prima);////PROBLEMA: se atasca
+                        resultDivision=dividir(sPol,G_prima);
 
                         System.out.println("             RESULT DIVISION "+resultDivision); //////////TEST
                         resto=resultDivision.get(resultDivision.size()-1);

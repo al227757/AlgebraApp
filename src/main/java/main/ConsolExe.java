@@ -71,5 +71,55 @@ public class ConsolExe {
         System.out.println("------------DIVISION----------");
 
         System.out.println(cuaderno.dividir(h1,f));
+
+
+        ///// EJEMPLO 1 /////
+
+        System.out.println("EJEMPLO1");
+        Polinomio pol1=new Polinomio();
+        Polinomio pol2=new Polinomio();
+        int[] term1 = {2,0,0};
+        int[] term2 = {1,1,0};
+        int[] term3 = {0,2,0};
+        pol1.addTermino(new Termino(1,term1));
+        pol2.addTermino(new Termino(1,term2));
+        pol2.addTermino(new Termino(-1,term3));
+
+        List<Polinomio> base = new LinkedList<Polinomio>();
+        base.add(pol1);
+        base.add(pol2);
+
+        List<Polinomio> grobner1 = cuaderno.groebnerBase(base);
+        System.out.println("Grobner base"+grobner1);
+
+        ///// EJEMPLO 2 /////
+
+        System.out.println("EJEMPLO2");
+        Polinomio pol3=new Polinomio();
+        Polinomio pol4=new Polinomio();
+
+        int[] mon1 = {3,0,0};
+        int[] mon2 = {1,1,0};
+
+        int[] mon4 = {2,1,0};
+        int[] mon5 = {0,2,0};
+        int[] mon6 = {1,0,0};
+
+        pol3.addTermino(new Termino(1,mon1));
+        pol3.addTermino(new Termino(-2,mon2));
+
+
+        pol4.addTermino(new Termino(1,mon4));
+        pol4.addTermino(new Termino(-2,mon5));
+        pol4.addTermino(new Termino(1,mon6));
+
+
+        List<Polinomio> base2 = new LinkedList<Polinomio>();
+        base2.add(pol3);
+        base2.add(pol4);
+
+
+        List<Polinomio> grobner2 = cuaderno.groebnerBase(base2);
+        System.out.println("Grobner base"+grobner2);
     }
 }
