@@ -91,6 +91,7 @@ public class ConsolExe {
 
         List<Polinomio> grobner1 = cuaderno.groebnerBase(base);
         System.out.println("Grobner base"+grobner1);
+        System.out.println("Minimal base"+cuaderno.minimalGroebnerBase(base));
 
         ///// EJEMPLO 2 /////
 
@@ -109,7 +110,7 @@ public class ConsolExe {
         pol3.addTermino(new Termino(-2,mon2));
 
 
-        pol4.addTermino(new Termino(1,mon4));
+        //pol4.addTermino(new Termino(1,mon4));
         pol4.addTermino(new Termino(-2,mon5));
         pol4.addTermino(new Termino(1,mon6));
 

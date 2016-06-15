@@ -201,6 +201,35 @@ public class Cuaderno {
 
 
     }
+    public List<Polinomio> minimalGroebnerBase(List<Polinomio> F){
+        List<Polinomio> baseGroebner = this.groebnerBase(F);
+        List<Polinomio> baseMinimal = new LinkedList<Polinomio>(baseGroebner);
+        for(int i=0;i<baseGroebner.size();i++){
+
+            for(int j=i;j<baseGroebner.size();j++){
+                if(j!=i){
+                    int [] coeficientes1=baseGroebner.get(i).leadingTerm(this.orden).getMonomio();
+                    int [] coeficientes2=baseGroebner.get(j).leadingTerm(this.orden).getMonomio();
+                    boolean jDividei=true;
+
+                    for(int k=0;k<coeficientes1.length;k++){
+                        if(coeficientes2[k]<=coeficientes1[k]){
+                            jDividei=jDividei&&true;
+                        }else{
+                            jDividei=jDividei&&false;
+                        }
+                    }
+                    if(jDividei){
+                        baseMinimal.remove(i);
+                    }
+                }
+
+            }
+
+        }
+
+        return baseMinimal;
+    }
 
 
 }
