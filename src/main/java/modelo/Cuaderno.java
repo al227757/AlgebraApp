@@ -234,6 +234,12 @@ public class Cuaderno {
                 newBaseMinimal.add(p);
             }
         }
+        for(Polinomio p:newBaseMinimal){
+            float coef = p.leadingTerm(this.orden).getCoeficiente();
+            for(Termino t:p.getTerminos()){
+                t.setCoeficiente(t.getCoeficiente()/coef);
+            }
+        }
 
         return newBaseMinimal;
     }
