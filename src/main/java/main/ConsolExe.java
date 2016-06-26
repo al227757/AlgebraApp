@@ -74,55 +74,53 @@ public class ConsolExe {
 
 
         ///// EJEMPLO 1 /////
+        //p1 = x^2 + y^2 + z^2 - 1
+        //p2 = x - z + 2
+        //p3 = z^2 - x y
 
-        System.out.println("EJEMPLO1");
+        //Lexicographic --> { 12 - 28z + 27z^2 - 12z^3 + 3z^4 , -6 + 4y + 11z - 6z^2 + 3z^3 , 2 + x - z }
+
+        //DegreeReverseLexicographic --> {2+x-z, -2y + yz -z^2 , 3 + y^2 - 4z + 2z^2 , -6 + 4y + 11z -6z^2 + 3z^3}
+
+        System.out.println("EJEMPLO1 - Lex");
         Polinomio pol1=new Polinomio();
         Polinomio pol2=new Polinomio();
+        Polinomio pol3=new Polinomio();
+
         int[] term1 = {2,0,0};
-        int[] term2 = {1,1,0};
-        int[] term3 = {0,2,0};
+        int[] term2 = {0,2,0};
+        int[] term3 = {0,0,2};
+        int[] term4 = {0,0,0};
+
         pol1.addTermino(new Termino(1,term1));
-        pol2.addTermino(new Termino(1,term2));
-        pol2.addTermino(new Termino(-1,term3));
+        pol1.addTermino(new Termino(1,term2));
+        pol1.addTermino(new Termino(1,term3));
+        pol1.addTermino(new Termino(-1,term4));
+
+        int[] term5 = {1,0,0};
+        int[] term6 = {0,0,1};
+        int[] term7 = {0,0,0};
+
+        pol2.addTermino(new Termino(1,term5));
+        pol2.addTermino(new Termino(-1,term6));
+        pol2.addTermino(new Termino(2,term7));
+
+        int[] term8 = {0,2,0};
+        int[] term9 = {1,1,0};
+
+        pol3.addTermino(new Termino(1,term8));
+        pol3.addTermino(new Termino(-1,term9));
+
 
         List<Polinomio> base = new LinkedList<Polinomio>();
         base.add(pol1);
         base.add(pol2);
+        base.add(pol3);
 
         List<Polinomio> grobner1 = cuaderno.groebnerBase(base);
         System.out.println("Grobner base"+grobner1);
         System.out.println("Minimal base"+cuaderno.minimalGroebnerBase(base));
 
-        ///// EJEMPLO 2 /////
-
-        System.out.println("EJEMPLO2");
-        Polinomio pol3=new Polinomio();
-        Polinomio pol4=new Polinomio();
-
-        int[] mon1 = {3,0,0};
-        int[] mon2 = {1,1,0};
-
-        int[] mon4 = {2,1,0};
-        int[] mon5 = {0,2,0};
-        int[] mon6 = {1,0,0};
-
-        pol3.addTermino(new Termino(1,mon1));
-        pol3.addTermino(new Termino(-2,mon2));
-
-
-        pol4.addTermino(new Termino(1,mon4));
-        pol4.addTermino(new Termino(-2,mon5));
-        pol4.addTermino(new Termino(1,mon6));
-
-
-        List<Polinomio> base2 = new LinkedList<Polinomio>();
-        base2.add(pol3);
-        base2.add(pol4);
-
-
-        List<Polinomio> grobner2 = cuaderno.groebnerBase(base2);
-        System.out.println("Grobner base"+grobner2);
-
-        System.out.println("Reduced base"+cuaderno.minimalGroebnerBase(base2));
+        
     }
 }
